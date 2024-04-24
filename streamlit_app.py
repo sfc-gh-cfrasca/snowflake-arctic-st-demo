@@ -57,7 +57,9 @@ def generate_arctic_response():
                                   "temperature": temperature,
                                   "top_p": top_p,
                                   }):
-        yield str(event)
+        chunk = str(event)
+        if chunk:
+           yield chunk
 
 # User-provided prompt
 if prompt := st.chat_input(disabled=not replicate_api):
