@@ -74,5 +74,8 @@ if st.session_state.messages[-1]["role"] != "assistant":
     with st.chat_message("assistant"):
         response = generate_arctic_response()
         full_response = st.write_stream(response)
-    message = {"role": "assistant", "content": full_response}
-    st.session_state.messages.append(message)
+    if full_response:
+        message = {"role": "assistant", "content": full_response}
+        st.session_state.messages.append(message)
+    else:
+      print("Model response empty")
