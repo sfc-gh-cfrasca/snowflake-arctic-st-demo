@@ -60,6 +60,8 @@ def generate_arctic_response():
         chunk = str(event)
         if chunk:
            yield chunk
+        else:
+            print("Skipping empty chunk")
 
 # User-provided prompt
 if prompt := st.chat_input(disabled=not replicate_api):
